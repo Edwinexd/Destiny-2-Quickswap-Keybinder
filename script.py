@@ -1,3 +1,4 @@
+# Copyright Edwin Sundberg 2021
 import xml.etree.ElementTree, os
 filepath = f"{os.getenv('APPDATA')}/Bungie/DestinyPC/prefs/cvars.xml"
 os.chmod(filepath, 0o777)
@@ -16,6 +17,9 @@ if action == "quick swap":
         if elem.attrib["name"] == "switch_weapons":
             normal = elem.attrib["value"].split('!')[0]
             elem.set("value", f"{normal}!{keybind}")
+        elif elem.attrib["name"] == "next_weapon":
+            normal = elem.attrib["value"].split('!')[0]
+            elem.set("value", f"{normal}!unused")
         elif elem.attrib["name"] == "move_forward":
             normal = elem.attrib["value"].split('!')[0]
             elem.set("value", f"{normal}!{keybind}")
